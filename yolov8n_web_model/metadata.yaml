@@ -1,0 +1,23 @@
+description: Ultralytics best model trained on /content/dataTrain/data.yaml
+author: Ultralytics
+date: '2024-04-21T16:51:29.153832'
+version: 8.2.2
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 640
+- 640
+names:
+  0: Lentes
+  1: Billetera
+  2: Bolson
+  3: Cartera
+  4: Gorra
+  5: Laptop
+  6: Libro
+  7: Pachon
+  8: Reloj
+  9: Telefono
