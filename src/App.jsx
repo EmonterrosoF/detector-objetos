@@ -5,6 +5,7 @@ import Loader from "./components/loader";
 import ButtonHandler from "./components/btn-handler";
 import { detect, detectVideo } from "./utils/detect";
 import "./style/App.css";
+import objects from "./utils/labels.json";
 
 const App = () => {
   const [loading, setLoading] = useState({ loading: true, progress: 0 }); // loading state
@@ -48,41 +49,52 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      {loading.loading && <Loader>Loading model... {(loading.progress * 100).toFixed(2)}%</Loader>}
-      <div className="header">
-        <h1>📷 YOLOv8 Live Detection App</h1>
-        <p>
-          YOLOv8 live detection application on browser powered by <code>tensorflow.js</code>
-        </p>
-        <p>
-          Serving : <code className="code">{modelName}</code>
-        </p>
-      </div>
+    // <div className="container">
+    <>
+      {loading.loading && (
+        <Loader>
+          Cargando Modelo... {(loading.progress * 100).toFixed(2)}%
+        </Loader>
+      )}
+      <div className="App">
+        <section className="grapper-logo">
+          <img className="logo" src="/umg.webp" alt="logo umg" />
+          <h2 className="text">Universidad Mariano Gálvez de Guatemala</h2>
+        </section>
+        <section className="content">
+          <div className="header">
+            <h1 className="title">Visión por IA</h1>
+            <p className="subtitle">Ingenieria en Sistemas</p>
+            <p className="subtitle">Noveno Semestre</p>
+          </div>
+          <div className="grapper-camera">
+            <video
+              autoPlay
+              muted
+              ref={cameraRef}
+              onPlay={() =>
+                detectVideo(cameraRef.current, model, canvasRef.current)
+              }
+            />
 
-      <div className="content">
-        <img
-          src="#"
-          ref={imageRef}
-          onLoad={() => detect(imageRef.current, model, canvasRef.current)}
-        />
-        <video
-          autoPlay
-          muted
-          ref={cameraRef}
-          onPlay={() => detectVideo(cameraRef.current, model, canvasRef.current)}
-        />
-        <video
-          autoPlay
-          muted
-          ref={videoRef}
-          onPlay={() => detectVideo(videoRef.current, model, canvasRef.current)}
-        />
-        <canvas width={model.inputShape[1]} height={model.inputShape[2]} ref={canvasRef} />
+            <canvas
+              width={model.inputShape[1]}
+              height={model.inputShape[2]}
+              ref={canvasRef}
+            />
+          </div>
+          <ButtonHandler cameraRef={cameraRef} />
+        </section>
+        <section className="grapper-list_objects">
+          <h2 className="subtitle">Lista de Objetos a Detectar</h2>
+          <ul>
+            {objects.map((object, i) => (
+              <li key={i}>{object}</li>
+            ))}
+          </ul>
+        </section>
       </div>
-
-      <ButtonHandler imageRef={imageRef} cameraRef={cameraRef} videoRef={videoRef} />
-    </div>
+    </>
   );
 };
 

@@ -3,8 +3,8 @@ import "../style/loader.css";
 const Loader = (props) => {
   return (
     <div className="wrapper" {...props}>
-      <div className="spinner"></div>
       <p>{props.children}</p>
+      <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
   );
 };
