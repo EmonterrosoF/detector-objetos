@@ -6,6 +6,7 @@ import ButtonHandler from "./components/btn-handler";
 import { detect, detectVideo } from "./utils/detect";
 import "./style/App.css";
 import objects from "./utils/labels.json";
+import umg from "./assets/umg.webp";
 
 const App = () => {
   const [loading, setLoading] = useState({ loading: true, progress: 0 }); // loading state
@@ -15,9 +16,7 @@ const App = () => {
   }); // init model & input shape
 
   // references
-  const imageRef = useRef(null);
   const cameraRef = useRef(null);
-  const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
   // model configs
@@ -58,14 +57,17 @@ const App = () => {
       )}
       <div className="App">
         <section className="grapper-logo">
-          <img className="logo" src="/umg.webp" alt="logo umg" />
-          <h2 className="text">Universidad Mariano Gálvez de Guatemala</h2>
+          <img className="logo" src={umg} alt="logo umg" />
+          <h2 className="logo-text">Universidad Mariano Gálvez de Guatemala</h2>
+          <h2 className="logo-text2">
+            Centro Universitario Chiquimulilla, Santa Rosa
+          </h2>
         </section>
         <section className="content">
           <div className="header">
             <h1 className="title">Visión por IA</h1>
-            <p className="subtitle">Ingenieria en Sistemas</p>
-            <p className="subtitle">Noveno Semestre</p>
+            <p className="text-title">Ingenieria en Sistemas</p>
+            <p className="text-title">Noveno Semestre</p>
           </div>
           <div className="grapper-camera">
             <video
