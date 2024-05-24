@@ -24,6 +24,16 @@
 .logo {
 }
 
+.logo-text {
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+
+.logo-text2 {
+  color: yellow;
+  -webkit-text-stroke: 1px black;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -50,8 +60,7 @@
 }
 
 .grapper-camera {
-  position: relative; 
-  background: green;
+  position: relative;
 }
 
 video {
@@ -62,7 +71,7 @@ video {
   border-radius: 10px;
 }
 
- canvas {
+canvas {
   position: absolute;
   top: 0;
   left: 0;
@@ -73,11 +82,24 @@ video {
 
 .title {
   font-size: 40px;
-  font-weight: bold;
+  font-weight: 900;
+  color: #e71312;
+  -webkit-text-stroke: 1px black;
+}
+
+.text-title {
+  font-size: 25px;
+  color: white;
+  font-weight: 600;
+  -webkit-text-stroke: 1px black;
+
 }
 
 .subtitle {
-  font-size: 25px;
+  font-size: 30px;
+  color: #e71312;
+  font-weight: 800;
+  -webkit-text-stroke: 1px black;
 }
 
 button {
@@ -86,9 +108,10 @@ button {
   background-color: black;
   border: 2px solid black;
   margin: 0 5px;
-  padding: 5px;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 button:hover {
@@ -107,6 +130,9 @@ ul {
   gap: 10px;
   font-size: 20px;
   padding: 15px 0 0 0;
+  color: white;
+  font-weight: 700;
+  -webkit-text-stroke: 1px black;
 }
 
 li {
